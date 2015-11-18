@@ -6,7 +6,7 @@
 
 # You will build Rewsly during lesson 11 & 12.
 
-#####Time: 60 min
+#s####Time: 60 min
 
 # Here are the features needed by next class.
 
@@ -31,13 +31,24 @@
 # Happy coding :)
 
 class StoryController < ApplicationController
+
+  before_action :load_story, only: [:edit, :show, :update]
+
   def index
+    @stories = Story.all
   end
 
   def new
+    @story = Story.new
   end
 
   def create
+    @story = Story.new(safe_story_params)
+    if @story.save
+        redirect_to @story
+    else
+        render 'new'
+    end
   end
 
   def edit
@@ -48,4 +59,17 @@ class StoryController < ApplicationController
 
   def show
   end
+
+  private
+    def safe_story_params
+      params.require('story').permit(:title, :link, :upvotes, :category)
+    end
+    
+    def load_story
+      @story = Story.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash.now[:notice] = "Invalid Story #{params[:id]}"
+      redirect_to root_path
+    end
+  
 end

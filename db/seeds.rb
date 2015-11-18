@@ -1,7 +1,8 @@
 puts 'Adding seed stories'
 Story.create title: "Open-plan offices make employees less productive, less happy, and more sick",
              link: 'http://qz.com/85400/moving-to-open-plan-offices-makes-employees-less-productive-less-happy-and-more-likely-to-get-sick/#',
-             upvotes: 1, category: 'Office Life'
+             upvotes: 1, 
+             category: 'Office Life'
 
 Story.create title: 'ydiff: Structural Comparison of Programs',
              link: 'http://yinwang0.wordpress.com/2012/01/03/ydiff/',

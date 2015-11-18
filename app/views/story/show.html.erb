@@ -1,2 +1,10 @@
-<h1>Story#show</h1>
-<p>Find me in app/views/story/show.html.erb</p>
+<!-- if coming from search page
+	only show those stories
+
+else -->
+	<h1><%= @story.title %></h1>
+	<h2><%= "Category:" @story.category %></h2>
+	<h3><%= "Upvotes:" @story.Upvotes %></h3>
+	<p><%= "More details:" @story.link %></p>
+<!-- end -->
+
